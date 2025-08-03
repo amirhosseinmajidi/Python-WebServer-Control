@@ -36,9 +36,9 @@ This project demonstrates the fundamentals of socket programming, multi-threadin
     Enter your choice:
     ```
 
-
-## 👨‍💻 Developers
-Daniyal Iran Mehr - Amirhossein Majidi
     - **To view connected clients**: Type `1` and press Enter.
     - **To block a client**: Type `2`, press Enter, and provide the IP address you wish to block.
     - **To unblock an IP**: Type `3`, press Enter, and provide the IP address to remove from the blocklist.
+  
+## 👨‍💻 Developers
+Daniyal Iran Mehr - Amirhossein Majidi
