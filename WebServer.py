@@ -192,4 +192,107 @@ def show_connected_ips():
                 cc += 1
 
 
+def disconnect_and_block_ip(ip):
+    """
+    Disconnects and blocks a specific IP address.
 
+    :param ip: The IP address to disconnect and block.
+    """
+
+    global connected_ips, blocked_ips
+    with connected_ips_lock:
+        if ip in connected_ips:
+            connected_ips.remove(ip)
+            blocked_ips.add(ip)
+            print("\033[96mDisconnected and blocked IP: \033[00m" + "\033[92m" + ip + "\033[00m")
+        else:
+            print(f"\033[91mIP {ip} not found in connected IPs.\033[00m")
+
+
+def unblock_ip(ip):
+    """
+    Unblocks a specific IP address.
+
+    :param ip: The IP address to unblock.
+    """
+
+    global connected_ips, blocked_ips
+    with connected_ips_lock:
+        if ip in blocked_ips or ip in firewall_ips:
+            try:
+                firewall_ips.remove(ip)
+            except:
+                blocked_ips.discard(ip)
+            print("\033[96mIP \033[00m" + "\033[92m" + ip + "\033[00m" + "\033[96m has been unblocked from Blocked-List and Firewall.\033[00m")
+        else:
+            print(f"\033[91mIP {ip} is not in Blocked-List or Firewall!\033[00m")
+
+
+def show_blocked_ips():
+    """
+    Displays the list of currently blocked IP addresses and firewall IP addresses.
+    """
+
+    global firewall_ips, blocked_ips
+    print("\033[96mFirewall-IPs:\033[00m")
+    if len(firewall_ips) == 0:
+        print("\033[91mThere is no IP in Firewall!\033[00m")
+    else:
+        cf = 0
+        for ip in firewall_ips:
+            if cf == len(firewall_ips)-1:
+                print("\033[92m" + ip + "\033[00m")
+            else:
+                print("\033[92m" + ip + "\033[00m", end=' - ')
+            cf += 1
+
+    print("\033[96mBlocked-IPs:\033[00m")
+    if len(blocked_ips) == 0:
+        print("\033[91mThere is no IP in Blocked List!\033[00m")
+    else:
+        cb = 0
+        for ip in blocked_ips:
+            if cb == len(blocked_ips)-1:
+                print("\033[92m" + ip + "\033[00m")
+            else:
+                print("\033[92m" + ip + "\033[00m", end=' - ')
+            cb += 1
+
+
+server_thread = threading.Thread(target=start_server, args=(SERVER_IP_ADR, 8080))
+server_thread.start()
+
+
+def server_management():
+    while True:
+        print("\n\033[96mServer Management Menu:")
+        print("1. Show connected IPs")
+        print("2. Disconnect and block an IP")
+        print("3. Unblock IP")
+        print("4. Show blocked IPs")
+        print("5. Exit\033[00m")
+        try:
+            choice = input("\033[95mEnter your choice: \033[00m")
+        except KeyboardInterrupt:
+            exit("\n\nThe Web Server has closed.\nGood Luck.")
+
+        if choice == '1':
+            show_connected_ips()
+        elif choice == '2':
+            ip = input("\033[95mEnter the IP to disconnect and block: \033[00m")
+            disconnect_and_block_ip(ip)
+        elif choice == '3':
+            ip = input("\033[95mEnter the IP to unblocking: \033[00m")
+            unblock_ip(ip)
+        elif choice == '4':
+            show_blocked_ips()
+        elif choice == '5':
+            print("\033[93mmanagement panel closed\033[00m")
+            break
+        else:
+            print("\033[91mInvalid choice. Please try again.\033[00m")
+
+        print("\033[96m------------------------------------------------------------------------------\033[00m", end='')
+
+
+server_management()
