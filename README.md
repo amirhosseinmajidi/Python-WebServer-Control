@@ -19,14 +19,11 @@ This project demonstrates the fundamentals of socket programming, multi-threadin
 1.  **Run the server:**
     Execute the `WebServer.py` script. The server will start listening for connections in the background, and the management console will appear in your terminal.
 
-## 👨‍💻 Developers
-Daniyal Iran Mehr - Amirhossein Majidi
-
-    ```
+    ```sh
     python WebServer.py
     ```
 
-3.  **Use the Management Console:**
+2.  **Use the Management Console:**
     Once the server is running, you will see the management menu. You can interact with the server by choosing one of the following options:
 
     ```
@@ -39,8 +36,9 @@ Daniyal Iran Mehr - Amirhossein Majidi
     Enter your choice:
     ```
 
+
+## 👨‍💻 Developers
+Daniyal Iran Mehr - Amirhossein Majidi
     - **To view connected clients**: Type `1` and press Enter.
     - **To block a client**: Type `2`, press Enter, and provide the IP address you wish to block.
     - **To unblock an IP**: Type `3`, press Enter, and provide the IP address to remove from the blocklist.
-  
-  
