@@ -19,11 +19,14 @@ This project demonstrates the fundamentals of socket programming, multi-threadin
 1.  **Run the server:**
     Execute the `WebServer.py` script. The server will start listening for connections in the background, and the management console will appear in your terminal.
 
+## 👨‍💻 Developers
+Daniyal Iran Mehr - Amirhossein Majidi
+
     ```sh
     python WebServer.py
     ```
 
-2.  **Use the Management Console:**
+3.  **Use the Management Console:**
     Once the server is running, you will see the management menu. You can interact with the server by choosing one of the following options:
 
     ```
