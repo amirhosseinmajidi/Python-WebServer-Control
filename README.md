@@ -22,7 +22,7 @@ This project demonstrates the fundamentals of socket programming, multi-threadin
 ## 👨‍💻 Developers
 Daniyal Iran Mehr - Amirhossein Majidi
 
-    ```sh
+    ```
     python WebServer.py
     ```
 
