@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{status_code} {status_message}</title>
+    <style>
+        body {{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: lightblue;
+        }}
+        h1 {{
+            background-color: rgb(0, 255, 255);
+            padding: 20px;
+            box-shadow: 8px 8px 12px rgba(0, 0, 0, 30);
+            border-radius: 15px;
+        }}
+        h2 {{
+            font-size: 35px;
+        }}
+        h3 {{
+            border: 5px dotted Black;
+            padding: 10px;
+            display: inline-block;
+        }}
+        p {{
+        font-size: 20px;
+        font-family: 'Courier New', monospace;
+        }}
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>{status_code} {status_message}</h1>
+        <br>
+        <h2>WEB SERVER</h2>
+        <h3>Number of Connected IPs: {list_size}</h3>
+        <br>
+        <p>Hello there, Daniyal IranMehr & AmirHossein Majidi have created this web server.</p>
+        <p>Hope you enjoy and find it useful</p>
+    </div>
+</body>
+</html>
